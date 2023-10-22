@@ -3,9 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Question;
-use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
-use App\Service\MarkdownHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Pagerfanta\Doctrine\ORM\QueryAdapter;
 use Pagerfanta\Pagerfanta;
@@ -15,7 +13,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 class QuestionController extends AbstractController
 {
@@ -27,7 +24,6 @@ class QuestionController extends AbstractController
         $this->logger = $logger;
         $this->isDebug = $isDebug;
     }
-
 
     #[Route(path: '/{page<\d+>}', name: 'app_homepage')]
     public function homepage(QuestionRepository $repository, int $page = 1)
@@ -65,7 +61,7 @@ class QuestionController extends AbstractController
         }
 
         return $this->render('question/show.html.twig', [
-            'question' => $question
+            'question' => $question,
         ]);
     }
 
@@ -83,9 +79,8 @@ class QuestionController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_question_show', [
-            'slug' => $question->getSlug()
+            'slug' => $question->getSlug(),
         ]);
-
     }
 
     #[Route(path: '/questions/edit/{slug}', name: 'app_question_edit')]
@@ -94,7 +89,7 @@ class QuestionController extends AbstractController
         $this->denyAccessUnlessGranted('EDIT', $question);
 
         return $this->render('question/edit.html.twig', [
-            'question' => $question
+            'question' => $question,
         ]);
     }
 }

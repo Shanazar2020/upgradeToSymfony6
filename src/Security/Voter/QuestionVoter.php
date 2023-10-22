@@ -15,13 +15,11 @@ class QuestionVoter extends Voter
 
     public function __construct(Security $security)
     {
-
         $this->security = $security;
     }
 
     protected function supports(string $attribute, $subject): bool
     {
-
         return in_array($attribute, ['EDIT'])
             && $subject instanceof \App\Entity\Question;
     }
@@ -48,7 +46,6 @@ class QuestionVoter extends Voter
         switch ($attribute) {
             case 'EDIT':
                 return $user === $subject->getOwner();
-
         }
 
         return false;

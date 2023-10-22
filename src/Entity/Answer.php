@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\AnswerRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
@@ -12,15 +11,16 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Answer
 {
+    use TimestampableEntity;
     public const STATUS_NEEDS_APPROVAL = 'needs_approval';
     public const STATUS_SPAM = 'spam';
     public const STATUS_APPROVED = 'approved';
 
-    use TimestampableEntity;
-
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -42,6 +42,7 @@ class Answer
 
     /**
      * @ORM\ManyToOne(targetEntity=Question::class, inversedBy="answers")
+     *
      * @ORM\JoinColumn(nullable=false)
      */
     private $question;
@@ -111,19 +112,22 @@ class Answer
 
     public function voteUp(): self
     {
-        $this->votes += 1;
+        ++$this->votes;
+
         return $this;
     }
 
     public function voteDown(): self
     {
-        $this->votes -= 1;
+        --$this->votes;
+
         return $this;
     }
 
     public function getVotesString(): string
     {
         $prefix = $this->getVotes() >= 0 ? '+' : '-';
+
         return sprintf('%s%d', $prefix, abs($this->getVotes()));
     }
 

@@ -12,7 +12,6 @@ use Scheb\TwoFactorBundle\Model\Totp\TwoFactorInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Http\Authenticator\Passport\UserPassportInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
@@ -23,7 +22,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 {
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     #[Groups('user:read')]
@@ -42,7 +43,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
      */
     #[Groups('user:read')]
     private $firstName;
@@ -73,7 +73,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     {
         $this->questions = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -187,11 +186,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     public function getAvatarUri(int $size = 32): string
     {
-//        https://ui-avatars.com/api/?name={{ app.user.firstName|url_encode }}&size=32&background=random
+        //        https://ui-avatars.com/api/?name={{ app.user.firstName|url_encode }}&size=32&background=random
         return 'https://ui-avatars.com/api/?    ' . http_build_query([
                 'name' => $this->getFirstName() ?: $this->getEmail(),
                 'size' => $size,
-                'background' => 'random'
+                'background' => 'random',
             ]);
     }
 
@@ -242,7 +241,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
         return $this;
     }
-
 
     public function isTotpAuthenticationEnabled(): bool
     {

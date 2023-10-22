@@ -2,9 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Answer;
-use App\Entity\QuestionTag;
-use App\Entity\Tag;
 use App\Factory\AnswerFactory;
 use App\Factory\QuestionFactory;
 use App\Factory\QuestionTagFactory;
@@ -19,14 +16,13 @@ class AppFixtures extends Fixture
     {
         UserFactory::createOne([
             'email' => 'abraca_admin@example.com',
-            'roles' => ['ROLE_ADMIN']
+            'roles' => ['ROLE_ADMIN'],
         ]);
 
         UserFactory::createOne([
-            'email' => 'abraca_user@example.com'
+            'email' => 'abraca_user@example.com',
         ]);
         UserFactory::createMany(10);
-
 
         TagFactory::createMany(100);
 
@@ -48,7 +44,7 @@ class AppFixtures extends Fixture
         AnswerFactory::new()
             ->createMany(100, function () use ($questions) {
                 return [
-                    'question' => $questions[array_rand($questions)]
+                    'question' => $questions[array_rand($questions)],
                 ];
             });
 

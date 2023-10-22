@@ -11,12 +11,13 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  */
 class Tag
 {
-
     use TimestampableEntity;
 
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;

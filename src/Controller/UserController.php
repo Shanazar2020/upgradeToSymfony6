@@ -15,7 +15,7 @@ class UserController extends BaseController
     public function apiMe(): Response
     {
         return $this->json($this->getUser(), 200, [], [
-            'groups' => ['user:read']
+            'groups' => ['user:read'],
         ]);
     }
 }

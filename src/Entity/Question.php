@@ -6,7 +6,6 @@ use App\Repository\AnswerRepository;
 use App\Repository\QuestionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -20,7 +19,9 @@ class Question
 
     /**
      * @ORM\Id()
+     *
      * @ORM\GeneratedValue()
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -32,6 +33,7 @@ class Question
 
     /**
      * @ORM\Column(type="string", length=100, unique=true)
+     *
      * @Gedmo\Slug(fields={"name"}, updatable=false)
      */
     private $slug;
@@ -53,6 +55,7 @@ class Question
 
     /**
      * @ORM\OneToMany(targetEntity=Answer::class, mappedBy="question", fetch="EXTRA_LAZY")
+     *
      * @ORM\OrderBy({"createdAt" = "DESC"})
      */
     private $answers;
@@ -64,19 +67,20 @@ class Question
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="questions")
+     *
      * @ORM\JoinColumn(nullable=false)
      */
     private $owner;
-//
-//    /**
-//     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="questions")
-//     */
-//    private $tags;
+    //
+    //    /**
+    //     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="questions")
+    //     */
+    //    private $tags;
 
     public function __construct()
     {
         $this->answers = new ArrayCollection();
-//        $this->tags = new ArrayCollection();
+        //        $this->tags = new ArrayCollection();
         $this->questionTags = new ArrayCollection();
     }
 
@@ -154,14 +158,14 @@ class Question
 
     public function upVote(): self
     {
-        $this->votes++;
+        ++$this->votes;
 
         return $this;
     }
 
     public function downVote(): self
     {
-        $this->votes--;
+        --$this->votes;
 
         return $this;
     }
@@ -200,30 +204,30 @@ class Question
 
         return $this;
     }
-//
-//    /**
-//     * @return Collection|Tag[]
-//     */
-//    public function getTags(): Collection
-//    {
-//        return $this->tags;
-//    }
-//
-//    public function addTag(Tag $tag): self
-//    {
-//        if (!$this->tags->contains($tag)) {
-//            $this->tags[] = $tag;
-//        }
-//
-//        return $this;
-//    }
-//
-//    public function removeTag(Tag $tag): self
-//    {
-//        $this->tags->removeElement($tag);
-//
-//        return $this;
-//    }
+    //
+    //    /**
+    //     * @return Collection|Tag[]
+    //     */
+    //    public function getTags(): Collection
+    //    {
+    //        return $this->tags;
+    //    }
+    //
+    //    public function addTag(Tag $tag): self
+    //    {
+    //        if (!$this->tags->contains($tag)) {
+    //            $this->tags[] = $tag;
+    //        }
+    //
+    //        return $this;
+    //    }
+    //
+    //    public function removeTag(Tag $tag): self
+    //    {
+    //        $this->tags->removeElement($tag);
+    //
+    //        return $this;
+    //    }
 
     /**
      * @return Collection|QuestionTag[]

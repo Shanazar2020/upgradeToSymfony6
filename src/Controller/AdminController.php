@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
 use Symfony\UX\Chartjs\Model\Chart;
-
-;
 
 class AdminController extends AbstractController
 {
@@ -42,7 +40,7 @@ class AdminController extends AbstractController
                     'backgroundColor' => [
                         'rgb(255, 99, 132)',
                         'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
+                        'rgb(255, 205, 86)',
                     ],
                     'hoverOffset' => 4,
                 ],
@@ -65,8 +63,7 @@ class AdminController extends AbstractController
     public function adminAnswers()
     {
         $this->denyAccessUnlessGranted('ROLE_COMMENT_ADMIN');
+
         return new Response('Pretend answers admin page');
     }
-
-
 }
