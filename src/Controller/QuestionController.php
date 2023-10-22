@@ -29,9 +29,7 @@ class QuestionController extends AbstractController
     }
 
 
-    /**
-     * @Route("/{page<\d+>}", name="app_homepage")
-     */
+    #[Route(path: '/{page<\d+>}', name: 'app_homepage')]
     public function homepage(QuestionRepository $repository, int $page = 1)
     {
         $queryBuilder = $repository->createAskedOrderedByNewestQueryBuilder();
@@ -49,9 +47,9 @@ class QuestionController extends AbstractController
     }
 
     /**
-     * @Route("/questions/new")
      * @IsGranted("ROLE_USER")
      */
+    #[Route(path: '/questions/new')]
     public function new(EntityManagerInterface $entityManager)
     {
         return new Response(sprintf(
@@ -59,9 +57,7 @@ class QuestionController extends AbstractController
         ));
     }
 
-    /**
-     * @Route("/questions/{slug}", name="app_question_show")
-     */
+    #[Route(path: '/questions/{slug}', name: 'app_question_show')]
     public function show(Question $question)
     {
         if ($this->isDebug) {
@@ -73,9 +69,7 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/questions/{slug}/vote", name="app_question_vote", methods="POST")
-     */
+    #[Route(path: '/questions/{slug}/vote', name: 'app_question_vote', methods: 'POST')]
     public function questionVote(Question $question, Request $request, EntityManagerInterface $entityManager)
     {
         $direction = $request->request->get('direction');
@@ -94,9 +88,7 @@ class QuestionController extends AbstractController
 
     }
 
-    /**
-     * @Route("/questions/edit/{slug}", name="app_question_edit")
-     */
+    #[Route(path: '/questions/edit/{slug}', name: 'app_question_edit')]
     public function edit(Question $question)
     {
         $this->denyAccessUnlessGranted('EDIT', $question);

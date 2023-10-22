@@ -10,9 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HealthCheck extends AbstractController
 {
 
-    /**
-     * @Route("/health-check", methods="GET", name="health_check")
-     */
+    #[Route(path: '/health-check', methods: 'GET', name: 'health_check')]
     public function healthCheck(AnswerRepository $answerRepository): JsonResponse
     {
         $data = $answerRepository->findOneBy([]);
@@ -20,7 +18,7 @@ class HealthCheck extends AbstractController
         return new JsonResponse([
             'status' => 'success',
             'message' => 'welcome to cauldron'
-        ], 200, []);
+        ], \Symfony\Component\HttpFoundation\Response::HTTP_OK, []);
     }
 
 }

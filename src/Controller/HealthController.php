@@ -9,9 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HealthController extends AbstractController
 {
-    /**
-     * @Route("/health")
-     */
+    #[Route(path: '/health')]
     public function index(EntityManagerInterface $entityManager): Response
     {
         print_r($_ENV['DATABASE_URL']);

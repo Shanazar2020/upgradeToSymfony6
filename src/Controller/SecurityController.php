@@ -15,9 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends BaseController
 {
-    /**
-     * @Route("/login", name="app_login")
-     * */
+    #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         return $this->render('security/login.html.twig', [
@@ -26,18 +24,16 @@ class SecurityController extends BaseController
         ]);
     }
 
-    /**
-     * @Route("/logout", name="app_logout")
-     * */
+    #[Route(path: '/logout', name: 'app_logout')]
     public function logout()
     {
         throw new \Exception("logout() should never be reached.");
     }
 
     /**
-     * @Route("/authenticate/2fa/enable", name="app_2fa_enable")
      * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
+    #[Route(path: '/authenticate/2fa/enable', name: 'app_2fa_enable')]
     public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
@@ -50,10 +46,8 @@ class SecurityController extends BaseController
         return $this->render('security/enable2fa.html.twig');
     }
 
-    /**
-     * @Route("/authentication/2fa/qr-code", name="app_qr_code")
-     *
-     */
+
+    #[Route(path: '/authentication/2fa/qr-code', name: 'app_qr_code')]
     public function authenticatorQrCode(TotpAuthenticatorInterface $totpAuthenticator)
     {
         $qrCodeContent = $totpAuthenticator->getQRContent($this->getUser());
@@ -61,6 +55,6 @@ class SecurityController extends BaseController
             ->data($qrCodeContent)
             ->build();
 
-        return new Response($result->getString(), 200, ['Content-Type' => 'image/png']);
+        return new Response($result->getString(), \Symfony\Component\HttpFoundation\Response::HTTP_OK, ['Content-Type' => 'image/png']);
     }
 }

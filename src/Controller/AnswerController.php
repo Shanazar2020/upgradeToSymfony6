@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class AnswerController extends BaseController
 {
     /**
-     * @Route("/answers/{id}/vote", methods="POST", name="answer_vote")
      * @IsGranted("IS_AUTHENTICATED_REMEMBERED")
      */
+    #[Route(path: '/answers/{id}/vote', methods: 'POST', name: 'answer_vote')]
     public function answerVote(Answer $answer, LoggerInterface $logger, Request $request, AnswerRepository $answerRepository, EntityManagerInterface $entityManager)
     {
         $logger->info("{user} is voting on answer {answer}", [
@@ -40,9 +40,7 @@ class AnswerController extends BaseController
         return $this->json(['votes' => $answer->getVotes()]);
     }
 
-    /**
-     * @Route("/answers/popular", name="app_popular_answers", methods="GET")
-     */
+    #[Route(path: '/answers/popular', name: 'app_popular_answers', methods: 'GET')]
     public function popularAnswers(AnswerRepository $answerRepository)
     {
         $answers = $answerRepository->findMostPopular();

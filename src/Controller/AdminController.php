@@ -12,9 +12,7 @@ use Symfony\UX\Chartjs\Model\Chart;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="admin_dashboard")
-     */
+    #[Route(path: '/admin', name: 'admin_dashboard')]
     public function dashboard(ChartBuilderInterface $chartBuilder)
     {
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
@@ -57,17 +55,13 @@ class AdminController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/login/")
-     */
+    #[Route(path: '/admin/login/')]
     public function adminLogin()
     {
         return new Response('Pretend admin');
     }
 
-    /**
-     * @Route("/admin/answers/")
-     */
+    #[Route(path: '/admin/answers/')]
     public function adminAnswers()
     {
         $this->denyAccessUnlessGranted('ROLE_COMMENT_ADMIN');

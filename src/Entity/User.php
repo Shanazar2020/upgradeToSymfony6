@@ -17,22 +17,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("user:read")
      */
+    #[Groups('user:read')]
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups("user:read")
      */
+    #[Groups('user:read')]
     private $email;
 
     /**
@@ -42,9 +42,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups("user:read")
      *
      */
+    #[Groups('user:read')]
     private $firstName;
 
     /**
@@ -195,9 +195,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
             ]);
     }
 
-    /**
-     * @Groups("user:read")
-     */
+    #[Groups('user:read')]
     public function getDisplayName(): string
     {
         return $this->getFirstName() ?: $this->getEmail();
