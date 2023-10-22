@@ -1,14 +1,15 @@
+<?php
+
+use Rector\Symfony\Set\SymfonyLevelSetList;
+use Rector\Symfony\Set\SymfonySetList;
 use Rector\Config\RectorConfig;
-use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 
 return static function (RectorConfig $rectorConfig): void {
-// register single rule
-$rectorConfig->rule(TypedPropertyFromStrictConstructorRector::class);
+    $rectorConfig->symfonyContainerXml(__DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml');
 
-// here we can define, what sets of rules will be applied
-// tip: use "SetList" class to autocomplete sets with your IDE
-$rectorConfig->sets([
-SetList::CODE_QUALITY
-]);
+    $rectorConfig->sets([
+        SymfonyLevelSetList::UP_TO_SYMFONY_54,
+        SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+    ]);
 };
