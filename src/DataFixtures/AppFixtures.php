@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         UserFactory::createOne([
             'email' => 'abraca_admin@example.com',
