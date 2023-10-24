@@ -14,7 +14,7 @@ class AnswerController extends BaseController
 {
     #[Route(path: '/answers/{id}/vote', name: 'answer_vote', methods: 'POST')]
     #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
-    public function answerVote(Answer $answer, LoggerInterface $logger, Request $request, AnswerRepository $answerRepository, EntityManagerInterface $entityManager)
+    public function answerVote(Answer $answer, LoggerInterface $logger, Request $request, AnswerRepository $answerRepository, EntityManagerInterface $entityManager): \Symfony\Component\HttpFoundation\JsonResponse
     {
         $logger->info('{user} is voting on answer {answer}', [
             'user' => $this->getUser()->getEmail(),
@@ -38,7 +38,7 @@ class AnswerController extends BaseController
     }
 
     #[Route(path: '/answers/popular', name: 'app_popular_answers', methods: 'GET')]
-    public function popularAnswers(AnswerRepository $answerRepository)
+    public function popularAnswers(AnswerRepository $answerRepository): \Symfony\Component\HttpFoundation\Response
     {
         $answers = $answerRepository->findMostPopular();
 

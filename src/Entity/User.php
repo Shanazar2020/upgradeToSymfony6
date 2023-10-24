@@ -36,7 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     private ?string $firstName = null;
 
     /**
-     * The hashed password
+     * The hashed password.
      */
     #[ORM\Column()]
     private ?string $password = null;

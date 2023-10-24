@@ -55,7 +55,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route(path: '/verify', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, VerifyEmailHelperInterface $verifyEmailHelper, UserRepository $userRepository, EntityManagerInterface $entityManager)
+    public function verifyUserEmail(Request $request, VerifyEmailHelperInterface $verifyEmailHelper, UserRepository $userRepository, EntityManagerInterface $entityManager): \Symfony\Component\HttpFoundation\RedirectResponse
     {
         $user = $userRepository->find($request->query->get('id'));
         if (!$user) {
