@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
-use Symfony\Component\Security\Http\Authenticator\Passport\PassportInterface;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 
 class DummyAuthenticator extends AbstractAuthenticator implements AuthenticationEntryPointInterface
@@ -17,7 +16,7 @@ class DummyAuthenticator extends AbstractAuthenticator implements Authentication
         return false;
     }
 
-    public function authenticate(Request $request): PassportInterface
+    public function authenticate(Request $request): \Symfony\Component\Security\Http\Authenticator\Passport\Passport
     {
         // TODO: Implement authenticate() method.
     }

@@ -21,7 +21,7 @@ class QuestionController extends AbstractController
     }
 
     #[Route(path: '/{page<\d+>}', name: 'app_homepage')]
-    public function homepage(QuestionRepository $repository, int $page = 1)
+    public function homepage(QuestionRepository $repository, int $page = 1): Response
     {
         $queryBuilder = $repository->createAskedOrderedByNewestQueryBuilder();
 

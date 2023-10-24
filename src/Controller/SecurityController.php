@@ -29,7 +29,7 @@ class SecurityController extends BaseController
 
     #[Route(path: '/authenticate/2fa/enable', name: 'app_2fa_enable')]
     #[IsGranted('IS_AUTHENTICATED_FULLY')]
-    public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator, EntityManagerInterface $entityManager)
+    public function enable2fa(TotpAuthenticatorInterface $totpAuthenticator, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         if (!$user->isTotpAuthenticationEnabled()) {
