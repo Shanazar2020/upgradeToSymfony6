@@ -14,60 +14,42 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- */
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFactorInterface
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
     #[Groups('user:read')]
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
     #[Groups('user:read')]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
+    #[ORM\Column(type: 'json')]
     private array $roles = [];
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     #[Groups('user:read')]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $firstName = null;
 
     /**
      * @var string|null The hashed password
-     * @ORM\Column(type="string", length=255)
      */
+    #[ORM\Column(type: 'string', length: 255)]
     private ?string $password = null;
 
     private $plainPassword;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Question::class, mappedBy="owner")
-     */
+    #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'owner')]
     private \Doctrine\Common\Collections\Collection|array $questions;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private bool $isVerified = false;
 
-    /**
-     * @ORM\Column(name="totpSecrect", type="string", nullable=true)
-     */
+    #[ORM\Column(name: 'totpSecrect', type: 'string', nullable: true)]
     private ?string $totpSecret = null;
 
     public function __construct()

@@ -37,10 +37,8 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_USER")
-     */
     #[Route(path: '/questions/new')]
+    #[IsGranted('ROLE_USER')]
     public function new(EntityManagerInterface $entityManager)
     {
         return new Response(sprintf(

@@ -12,7 +12,8 @@ class HealthController extends AbstractController
     #[Route(path: '/health')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        print_r($_ENV['DATABASE_URL']);
-        dd('hea');
+        //        print_r($_ENV['DATABASE_URL']);
+        print_r(__DIR__);
+        dd('');
     }
 }

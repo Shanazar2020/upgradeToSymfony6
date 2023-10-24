@@ -12,10 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AnswerController extends BaseController
 {
-    /**
-     * @IsGranted("IS_AUTHENTICATED_REMEMBERED")
-     */
     #[Route(path: '/answers/{id}/vote', name: 'answer_vote', methods: 'POST')]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function answerVote(Answer $answer, LoggerInterface $logger, Request $request, AnswerRepository $answerRepository, EntityManagerInterface $entityManager)
     {
         $logger->info('{user} is voting on answer {answer}', [

@@ -8,10 +8,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends BaseController
 {
-    /**
-     * @IsGranted("IS_AUTHENTICATED_REMEMBERED")
-     */
     #[Route(path: '/api/me', name: 'app_user_api_me_index', methods: ['GET'])]
+    #[IsGranted('IS_AUTHENTICATED_REMEMBERED')]
     public function apiMe(): Response
     {
         return $this->json($this->getUser(), 200, [], [
