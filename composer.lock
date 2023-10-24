@@ -4271,16 +4271,16 @@
         },
         {
             "name": "symfony/flex",
-            "version": "v2.3.3",
+          "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/flex.git",
-                "reference": "9c402af768c6c9f8126a9ffa192ecf7c16581e35"
+              "reference": "46bebc3d097d1bb1dce04c5ba83658afd79988f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/flex/zipball/9c402af768c6c9f8126a9ffa192ecf7c16581e35",
-                "reference": "9c402af768c6c9f8126a9ffa192ecf7c16581e35",
+              "url": "https://api.github.com/repos/symfony/flex/zipball/46bebc3d097d1bb1dce04c5ba83658afd79988f9",
+              "reference": "46bebc3d097d1bb1dce04c5ba83658afd79988f9",
                 "shasum": ""
             },
             "require": {
@@ -4316,7 +4316,7 @@
             "description": "Composer plugin for Symfony",
             "support": {
                 "issues": "https://github.com/symfony/flex/issues",
-                "source": "https://github.com/symfony/flex/tree/v2.3.3"
+              "source": "https://github.com/symfony/flex/tree/v2.4.0"
             },
             "funding": [
                 {
@@ -4332,7 +4332,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-04T09:02:35+00:00"
+          "time": "2023-10-22T18:05:25+00:00"
         },
         {
             "name": "symfony/form",
@@ -7783,16 +7783,16 @@
         },
         {
             "name": "symfony/webpack-encore-bundle",
-          "version": "v2.1.0",
+          "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/webpack-encore-bundle.git",
-              "reference": "50d4af5cca35dab66a51dfeeb63616937ba96f4a"
+              "reference": "75cb918df3f65e28cf0d4bc03042bc45ccb19dd0"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/50d4af5cca35dab66a51dfeeb63616937ba96f4a",
-              "reference": "50d4af5cca35dab66a51dfeeb63616937ba96f4a",
+              "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/75cb918df3f65e28cf0d4bc03042bc45ccb19dd0",
+              "reference": "75cb918df3f65e28cf0d4bc03042bc45ccb19dd0",
                 "shasum": ""
             },
             "require": {
@@ -7834,7 +7834,7 @@
             "description": "Integration with your Symfony app & Webpack Encore!",
             "support": {
                 "issues": "https://github.com/symfony/webpack-encore-bundle/issues",
-              "source": "https://github.com/symfony/webpack-encore-bundle/tree/v2.1.0"
+              "source": "https://github.com/symfony/webpack-encore-bundle/tree/v2.1.1"
             },
             "funding": [
                 {
@@ -7850,7 +7850,7 @@
                     "type": "tidelift"
                 }
             ],
-          "time": "2023-09-26T14:41:29+00:00"
+          "time": "2023-10-22T18:53:08+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -8599,16 +8599,16 @@
       },
       {
         "name": "rector/rector",
-        "version": "0.18.5",
+        "version": "0.18.6",
         "source": {
           "type": "git",
           "url": "https://github.com/rectorphp/rector.git",
-          "reference": "2a3b82f317e431fc142d21f3303891a4e64c96eb"
+          "reference": "02041b220704b9cbe075f0310d0954b2fda5c40c"
         },
         "dist": {
           "type": "zip",
-          "url": "https://api.github.com/repos/rectorphp/rector/zipball/2a3b82f317e431fc142d21f3303891a4e64c96eb",
-          "reference": "2a3b82f317e431fc142d21f3303891a4e64c96eb",
+          "url": "https://api.github.com/repos/rectorphp/rector/zipball/02041b220704b9cbe075f0310d0954b2fda5c40c",
+          "reference": "02041b220704b9cbe075f0310d0954b2fda5c40c",
           "shasum": ""
         },
         "require": {
@@ -8643,7 +8643,7 @@
         ],
         "support": {
           "issues": "https://github.com/rectorphp/rector/issues",
-          "source": "https://github.com/rectorphp/rector/tree/0.18.5"
+          "source": "https://github.com/rectorphp/rector/tree/0.18.6"
         },
         "funding": [
           {
@@ -8651,7 +8651,7 @@
             "type": "github"
           }
         ],
-        "time": "2023-10-05T11:25:40+00:00"
+        "time": "2023-10-24T15:00:59+00:00"
         },
         {
             "name": "symfony/debug-bundle",

@@ -34,40 +34,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      * @ORM\Column(type="string", length=180, unique=true)
      */
     #[Groups('user:read')]
-    private $email;
+    private ?string $email = null;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     #[Groups('user:read')]
-    private $firstName;
+    private ?string $firstName = null;
 
     /**
+     * @var string|null The hashed password
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private ?string $password = null;
 
     private $plainPassword;
 
     /**
      * @ORM\OneToMany(targetEntity=Question::class, mappedBy="owner")
      */
-    private $questions;
+    private \Doctrine\Common\Collections\Collection|array $questions;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isVerified = false;
+    private bool $isVerified = false;
 
     /**
      * @ORM\Column(name="totpSecrect", type="string", nullable=true)
      */
-    private $totpSecret;
+    private ?string $totpSecret = null;
 
     public function __construct()
     {

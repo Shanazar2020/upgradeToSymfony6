@@ -26,27 +26,21 @@ class AppFixtures extends Fixture
 
         TagFactory::createMany(100);
 
-        $questions = QuestionFactory::new()->createMany(20, function () {
-            return [
-                'owner' => UserFactory::random(),
-            ];
-        });
+        $questions = QuestionFactory::new()->createMany(20, fn() => [
+            'owner' => UserFactory::random(),
+        ]);
 
-        QuestionTagFactory::new()->createMany(100, function () {
-            return [
-                'question' => QuestionFactory::random(),
-                'tag' => TagFactory::random(),
-            ];
-        });
+        QuestionTagFactory::new()->createMany(100, fn() => [
+            'question' => QuestionFactory::random(),
+            'tag' => TagFactory::random(),
+        ]);
 
         QuestionFactory::new()->unpublished()->createMany(5);
 
         AnswerFactory::new()
-            ->createMany(100, function () use ($questions) {
-                return [
-                    'question' => $questions[array_rand($questions)],
-                ];
-            });
+            ->createMany(100, fn() => [
+                'question' => $questions[array_rand($questions)],
+            ]);
 
         AnswerFactory::new()->needsApproval()->many(20)->create();
 

@@ -21,13 +21,8 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    private UserRepository $userRepository;
-    private RouterInterface $router;
-
-    public function __construct(UserRepository $userRepository, RouterInterface $router)
+    public function __construct(private UserRepository $userRepository, private RouterInterface $router)
     {
-        $this->userRepository = $userRepository;
-        $this->router = $router;
     }
 
     public function authenticate(Request $request): Passport
