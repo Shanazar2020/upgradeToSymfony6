@@ -21,35 +21,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[Groups('user:read')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
     #[Groups('user:read')]
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
     #[Groups('user:read')]
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[ORM\Column(nullable: true)]
     private ?string $firstName = null;
 
     /**
-     * @var string|null The hashed password
+     * The hashed password
      */
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column()]
     private ?string $password = null;
 
-    private $plainPassword;
+    private ?string $plainPassword = null;
 
     #[ORM\OneToMany(targetEntity: Question::class, mappedBy: 'owner')]
-    private \Doctrine\Common\Collections\Collection|array $questions;
+    private Collection $questions;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column()]
     private bool $isVerified = false;
 
-    #[ORM\Column(name: 'totpSecrect', type: 'string', nullable: true)]
+    #[ORM\Column(name: 'totpSecrect', nullable: true)]
     private ?string $totpSecret = null;
 
     public function __construct()

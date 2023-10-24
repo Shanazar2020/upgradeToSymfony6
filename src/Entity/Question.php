@@ -17,42 +17,35 @@ class Question
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column()]
     private ?string $name = null;
 
-    /**
-     * @Gedmo\Slug(fields={"name"}, updatable=false)
-     */
-    #[ORM\Column(type: 'string', length: 100, unique: true)]
+    #[Gedmo\Slug(fields: ['name'])]
+    #[ORM\Column(length: 100, unique: true)]
     private ?string $slug = null;
 
     #[ORM\Column(type: 'text')]
     private ?string $question = null;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private ?\DateTimeInterface $askedAt = null;
+    private ?\DateTime $askedAt = null;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column()]
     private int $votes = 0;
 
     #[ORM\OneToMany(targetEntity: Answer::class, mappedBy: 'question', fetch: 'EXTRA_LAZY')]
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
-    private \Doctrine\Common\Collections\Collection|array $answers;
+    private Collection $answers;
 
     #[ORM\OneToMany(targetEntity: QuestionTag::class, mappedBy: 'question')]
-    private \Doctrine\Common\Collections\Collection|array $questionTags;
+    private Collection $questionTags;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'questions')]
+    #[ORM\ManyToOne(inversedBy: 'questions')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?\App\Entity\User $owner = null;
-    //
-    //    /**
-    //     * @ORM\ManyToMany(targetEntity=Tag::class, inversedBy="questions")
-    //     */
-    //    private $tags;
+    private ?User $owner = null;
 
     public function __construct()
     {
