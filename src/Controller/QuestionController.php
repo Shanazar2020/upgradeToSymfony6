@@ -47,7 +47,7 @@ class QuestionController extends AbstractController
     }
 
     #[Route(path: '/questions/{slug}', name: 'app_question_show')]
-    p blic  unction show(Question stion)  Respons
+    public function show(Question $question)
     {
         if ($this->isDebug) {
             $this->logger->info('We are in debug mode!');
@@ -59,7 +59,7 @@ class QuestionController extends AbstractController
     }
 
     #[Route(path: '/questions/{slug}/vote', name: 'app_question_vote', methods: 'POST')]
-    public function qu stion ote(Question $questi n, Reque t $reque ntityM nagerInt rface $entityManager)  \Symfony\ omponen \HttpFoun ation\RedirectResponse
+    public function questionVote(Question $question, Request $request, EntityManagerInterface $entityManager)
     {
         $direction = $request->request->get('direction');
 
@@ -76,8 +76,8 @@ class QuestionController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/questions/edit/{slug}', name: 'app_question_ed
-    public fu ction edit(Question $ques ion): Response
+    #[Route(path: '/questions/edit/{slug}', name: 'app_question_edit')]
+    public function edit(Question $question)
     {
         $this->denyAccessUnlessGranted('EDIT', $question);
 
