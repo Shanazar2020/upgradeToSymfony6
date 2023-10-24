@@ -26,8 +26,8 @@ security:
             provider: app_user_provider
             entry_point: form_login
             custom_authenticator:
-                #                - App\Security\LoginFormAuthenticator
-                - App\Security\DummyAuthenticator
+              - App\Security\LoginFormAuthenticator
+          #                - App\Security\DummyAuthenticator
             form_login:
                 login_path: app_login
                 check_path: app_login
@@ -43,7 +43,7 @@ security:
 
             switch_user: true
 
-            login_throttling: true
+          #            login_throttling: true
 
             remember_me:
                 secret: '%kernel.secret%'
