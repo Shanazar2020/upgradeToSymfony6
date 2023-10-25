@@ -96,12 +96,32 @@ class RegistrationController extends AbstractController
 
     private function sendVerificationEmail(MailerInterface $mailer, User $user, string $signedUrl): void
     {
+        $emailTemplate = <<<EOT
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Email Verification</title>
+            </head>
+            <body>
+                <p>Dear {$user->getFirstName()},</p>
+                
+                <p>Thank you for signing up! To complete your registration, please click the following link to verify your email address:</p>
+                
+                <p><a href="{$signedUrl}">Verify Email</a></p>
+                
+                <p>If you did not sign up for this service, you can safely ignore this email.</p>
+                
+                <p>Best regards,</p>
+                <p>Cauldron Overflow</p>
+            </body>
+            </html>
+        EOT;
         $email = (new Email())
             ->from('hello@example.com')
             ->to($user->getEmail())
             ->subject('Verify your email on Cauldron Overflow!')
             ->text('Please, follow the link to verify your email')
-            ->html(sprintf('<a href="%s">%s</a>', $signedUrl, $signedUrl));
+            ->html($emailTemplate);
 
         $mailer->send($email);
     }
