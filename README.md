@@ -65,9 +65,14 @@ Email Verification
 Screenshots
 -----------
 
-<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.57.51.png" alt="Verification Email" title="Email Verification">
-<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.58.13.png" alt="Mailer Service" title="Mailer Service">
-<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.58.41.png" alt="Email Verification" title="Email Verification">
+![Verification Email Sent](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/1563fb23-51d1-4601-9328-cc3569c34935)
+Verification Email Sent
+
+![Verification Email in Mailer](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/baa06cd9-fbf6-4710-b092-0e0ad018d5e5)
+Verification Email in Mailer Service
+
+![Email Verified](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/e0735e62-f30a-464d-b5f9-962e09fb4b40)
+Email Verified
 
 
 General Functionality
@@ -77,7 +82,7 @@ The general functionality of the website is to post question and answers. Alongs
 registration and authentications, admin pages and user verification process like email verification and 2-factor
 authentication.
 
-![Question Page](/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.59.40.png "Question Page")
+![Question Page](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/255cc387-4fca-4a09-b74b-25de601f2283)
 
 
 Contributors
