@@ -1,118 +1,96 @@
-# Tutorials, Friendship & Symfony5
+# Symfony 6 Project with Docker
 
-Well hi there! This repository holds the code and script
-for the [Symfony5 Tutorials](https://symfonycasts.com/tracks/symfony) on SymfonyCasts.
+This is an upgraded project from Symfony 5 to Symfony 6 running on Docker. It includes the latest PHP 8.0 version and
+new features like email verification after registration.
+The original Symfony 5 project can be reached from my other
+repository: [Cauldron Overflow](https://github.com/Shanazar2020/cauldron_overflow)
 
-## Setup
+## What's new
 
-If you've just downloaded the code, congratulations!!
+The project is updated to use PHP 8.0, Symfony 6 and Email Verification service is added while registration.
+To update syntax these PHP Tools are used:
 
-To get it working, follow these steps:
+- [Rector - Instant Upgrades and Automated Refactoring](https://github.com/rectorphp/rector#rector---instant-upgrades-and-automated-refactoring)
+- [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
 
-**Download Composer dependencies**
+## Getting Started
 
-Make sure you have [Composer installed](https://getcomposer.org/download/)
-and then run:
+To run this project, follow the steps below:
 
-```
-composer install
-```
+### Prerequisites
 
-You may alternatively need to run `php composer.phar install`, depending
-on how you installed Composer.
+- [Docker](https://www.docker.com/get-started) must be installed on your system.
 
-**Database Setup**
+### Clone the Repository
 
-The code comes with a `docker-compose.yaml` file and we recommend using
-Docker to boot a database container. You will still have PHP installed
-locally, but you'll connect to a database inside Docker. This is optional,
-but I think you'll love it!
+Clone this repository to your local machine:
 
-First, make sure you have [Docker installed](https://docs.docker.com/get-docker/)
-and running. To start the container, run:
+git clone https://github.com/yourusername/your-symfony-project.git `
 
-```
-docker-compose up -d
-```
+### Build and Run Docker Compose Services
 
-Next, build the database and execute the migrations with:
+Navigate to 'laradock' folder inside the project directory and use Docker Compose to build and run the services:
 
-```
-# "symfony console" is equivalent to "bin/console"
-# but its aware of your database container
-symfony console doctrine:database:create
-symfony console doctrine:migrations:migrate
-symfony console doctrine:fixtures:load
-```
+`cd your-symfony-project/laradock
+docker-compose up --build -d`
 
-(If you get an error about "MySQL server has gone away", just wait
-a few seconds and try again - the container is probably still booting).
+This will start the necessary Docker containers including php, composer and symfony cli.
 
-If you do *not* want to use Docker, just make sure to start your own
-database server and update the `DATABASE_URL` environment variable in
-`.env` or `.env.local` before running the commands above.
+After services are started go into you app directory inside docker workspace:
 
-**Start the Symfony web server**
+`docker-compose exec workspace bash`
 
-You can use Nginx or Apache, but Symfony's local web server
-works even better.
+### Start the Symfony Server
 
-To install the Symfony local web server, follow
-"Downloading the Symfony client" instructions found
-here: https://symfony.com/download - you only need to do this
-once on your system.
+You can use the Symfony CLI tool to start the development server. After navigating to the project directory inside
+docker workspace and run:
 
-Then, to start the web server, open a terminal, move into the
-project, and run:
+`symfony server:start`
 
-```
-symfony serve
-```
+You will see the URL where your Symfony application is running, typically at `http://127.0.0.1:8000`.
 
-(If this is your first time using this command, you may see an
-error that you need to run `symfony server:ca:install` first).
 
-Now check out the site at `https://localhost:8000`
+Email Verification
+------------------
 
-Have fun!
+1. Registration: Register a new user on your website. During the registration process, the user should receive a
+   verification email.
 
-**Optional: Webpack Encore Assets**
+2. View Email in Mailer Service: You can view the verification email by accessing the Mailer service's web interface.
+   Open a web browser and go to `http://127.0.0.1:1080` to view the received emails.
 
-This app uses Webpack Encore for the CSS, JS and image files. But
-to keep life simple, the final, built assets are already inside the
-project. So... you don't need to do anything to get thing set up!
+3. Verification: In the received email, there should be a link to verify the email address. Click the link to complete
+   the email verification process.
 
-If you *do* want to build the Webpack Encore assets manually, you
-totally can! Make sure you have [yarn](https://yarnpkg.com/lang/en/)
-installed and then run:
+Screenshots
+-----------
 
-```
-yarn install
-yarn encore dev --watch
-```
+<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.57.51.png" alt="Verification Email" title="Email Verification">
+<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.58.13.png" alt="Mailer Service" title="Mailer Service">
+<img src="/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.58.41.png" alt="Email Verification" title="Email Verification">
 
-## Have Ideas, Feedback or an Issue?
 
-If you have suggestions or questions, please feel free to
-open an issue on this repository or comment on the course
-itself. We're watching both :).
+General Functionality
+---------------------
 
-## Magic
+The general functionality of the website is to post question and answers. Alongside the project includes user
+registration and authentications, admin pages and user verification process like email verification and 2-factor
+authentication.
 
-Sandra's seen a leprechaun,
-Eddie touched a troll,
-Laurie danced with witches once,
-Charlie found some goblins' gold.
-Donald heard a mermaid sing,
-Susy spied an elf,
-But all the magic I have known
-I've had to make myself.
+![Question Page](/Users/bkmobil/Desktop/Screenshot 2023-10-25 at 15.59.40.png "Question Page")
 
-Shel Silverstein
 
-## Thanks!
+Contributors
+------------
+This project is developed by following tutorials
+from [Upgrading to Symfony 6.0](https://symfonycasts.com/screencast/symfony6-upgrade/upgrade-symfony6).
+Special thanks to a great tutor [Ryan Weaver](https://github.com/weaverryan).
 
-And as always, thanks so much for your support and letting
-us do what we love!
+And it is me:
 
-<3 Your friends at SymfonyCasts
+- [Shanazar](https://github.com/Shanazar2020)
+
+License
+-------
+
+This project is open-source and available under the [MIT License](https://www.mit.edu/~amini/LICENSE.md).
