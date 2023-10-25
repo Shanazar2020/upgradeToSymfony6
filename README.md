@@ -25,7 +25,7 @@ To run this project, follow the steps below:
 
 Clone this repository to your local machine:
 
-git clone https://github.com/yourusername/your-symfony-project.git `
+`git clone https://github.com/Shanazar2020/upgradeToSymfony6.git`
 
 ### Build and Run Docker Compose Services
 
