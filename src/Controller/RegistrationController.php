@@ -9,6 +9,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
@@ -17,7 +19,7 @@ use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, VerifyEmailHelperInterface $verifyEmailHelper, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, VerifyEmailHelperInterface $verifyEmailHelper, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -43,8 +45,12 @@ class RegistrationController extends AbstractController
                 ['id' => $user->getId()]
             );
 
-            // TODO: in real app, send this as an email
-            $this->addFlash('success', 'Confirm your email at: ' . $signatureComponents->getSignedUrl());
+            $signedUrl = $signatureComponents->getSignedUrl();
+            $this->sendVerificationEmail($mailer, $user, $signedUrl);
+            $this->addFlash('success', sprintf(
+                'Confirm your email - the verify link as sent to %s',
+                $user->getEmail()
+            ));
 
             return $this->redirectToRoute('app_homepage');
         }
@@ -86,5 +92,37 @@ class RegistrationController extends AbstractController
     public function resendVerifyEmail(): Response
     {
         return $this->render('registration/resend_verify_email.html.twig');
+    }
+
+    private function sendVerificationEmail(MailerInterface $mailer, User $user, string $signedUrl): void
+    {
+        $emailTemplate = <<<EOT
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Email Verification</title>
+            </head>
+            <body>
+                <p>Dear {$user->getFirstName()},</p>
+                
+                <p>Thank you for signing up! To complete your registration, please click the following link to verify your email address:</p>
+                
+                <p><a href="{$signedUrl}">Verify Email</a></p>
+                
+                <p>If you did not sign up for this service, you can safely ignore this email.</p>
+                
+                <p>Best regards,</p>
+                <p>Cauldron Overflow</p>
+            </body>
+            </html>
+        EOT;
+        $email = (new Email())
+            ->from('hello@example.com')
+            ->to($user->getEmail())
+            ->subject('Verify your email on Cauldron Overflow!')
+            ->text('Please, follow the link to verify your email')
+            ->html($emailTemplate);
+
+        $mailer->send($email);
     }
 }
