@@ -10,7 +10,7 @@ use Symfony\UX\Chartjs\Model\Chart;
 
 class AdminController extends AbstractController
 {
-    #[Route(path: '/admin', name: 'admin_dashboard')]
+    #[Route(path: '/myadmin', name: 'admin_dashboard')]
     public function dashboard(ChartBuilderInterface $chartBuilder): Response
     {
         $chart = $chartBuilder->createChart(Chart::TYPE_LINE);
