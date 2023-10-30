@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-  "content-hash": "4951cd43bb935be742b25169ab4411e0",
+  "content-hash": "31fcfa46cd3b6efb3b4b60e2dac6b551",
     "packages": [
         {
             "name": "babdev/pagerfanta-bundle",
@@ -1602,32 +1602,60 @@
           "time": "2022-05-23T21:33:49+00:00"
         },
         {
-          "name": "egulias/email-validator",
-          "version": "4.0.2",
+          "name": "easycorp/easyadmin-bundle",
+          "version": "v4.8.3",
           "source": {
             "type": "git",
-            "url": "https://github.com/egulias/EmailValidator.git",
-            "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e"
+            "url": "https://github.com/EasyCorp/EasyAdminBundle.git",
+            "reference": "f9e50a3bdcee3194d332525e52d3c064eb5cf1c0"
           },
           "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ebaaf5be6c0286928352e054f2d5125608e5405e",
-            "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e",
+            "url": "https://api.github.com/repos/EasyCorp/EasyAdminBundle/zipball/f9e50a3bdcee3194d332525e52d3c064eb5cf1c0",
+            "reference": "f9e50a3bdcee3194d332525e52d3c064eb5cf1c0",
             "shasum": ""
           },
           "require": {
-            "doctrine/lexer": "^2.0 || ^3.0",
-            "php": ">=8.1",
-            "symfony/polyfill-intl-idn": "^1.26"
+            "doctrine/doctrine-bundle": "^2.5",
+            "doctrine/orm": "^2.10",
+            "ext-json": "*",
+            "php": ">=8.0.2",
+            "symfony/asset": "^5.4|^6.0",
+            "symfony/cache": "^5.4|^6.0",
+            "symfony/config": "^5.4|^6.0",
+            "symfony/dependency-injection": "^5.4|^6.0",
+            "symfony/deprecation-contracts": "^3.0",
+            "symfony/doctrine-bridge": "^5.4|^6.0",
+            "symfony/event-dispatcher": "^5.4|^6.0",
+            "symfony/filesystem": "^5.4|^6.0",
+            "symfony/form": "^5.4|^6.0",
+            "symfony/framework-bundle": "^5.4|^6.0",
+            "symfony/http-foundation": "^5.4|^6.0",
+            "symfony/http-kernel": "^5.4|^6.0",
+            "symfony/intl": "^5.4|^6.0",
+            "symfony/property-access": "^5.4|^6.0",
+            "symfony/security-bundle": "^5.4|^6.0",
+            "symfony/string": "^5.4|^6.0",
+            "symfony/translation": "^5.4|^6.0",
+            "symfony/twig-bundle": "^5.4|^6.0",
+            "symfony/uid": "^5.4|^6.0",
+            "symfony/validator": "^5.4|^6.0"
           },
           "require-dev": {
-            "phpunit/phpunit": "^10.2",
-            "vimeo/psalm": "^5.12"
+            "doctrine/doctrine-fixtures-bundle": "^3.4",
+            "phpstan/extension-installer": "^1.2",
+            "phpstan/phpstan": "^1.9",
+            "phpstan/phpstan-phpunit": "^1.2",
+            "phpstan/phpstan-strict-rules": "^1.4",
+            "phpstan/phpstan-symfony": "^1.2",
+            "psr/log": "^1.0",
+            "symfony/browser-kit": "^5.4|^6.0",
+            "symfony/css-selector": "^5.4|^6.0",
+            "symfony/debug-bundle": "^5.4|^6.0",
+            "symfony/dom-crawler": "^5.4|^6.0",
+            "symfony/phpunit-bridge": "^5.4|^6.0"
           },
-          "suggest": {
-            "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
-          },
-          "type": "library",
+          "type": "symfony-bundle",
           "extra": {
             "branch-alias": {
               "dev-master": "4.0.x-dev"
@@ -1635,7 +1663,7 @@
           },
           "autoload": {
             "psr-4": {
-              "Egulias\\EmailValidator\\": "src"
+              "EasyCorp\\Bundle\\EasyAdminBundle\\": "src/"
             }
           },
           "notification-url": "https://packagist.org/downloads/",
@@ -1644,29 +1672,95 @@
           ],
           "authors": [
             {
-              "name": "Eduardo Gulias Davis"
+              "name": "Project Contributors",
+              "homepage": "https://github.com/EasyCorp/EasyAdminBundle/graphs/contributors"
             }
           ],
-          "description": "A library for validating emails against several RFCs",
-          "homepage": "https://github.com/egulias/EmailValidator",
+          "description": "Admin generator for Symfony applications",
+          "homepage": "https://github.com/EasyCorp/EasyAdminBundle",
           "keywords": [
-            "email",
-            "emailvalidation",
-            "emailvalidator",
-            "validation",
-            "validator"
+            "admin",
+            "backend",
+            "generator"
           ],
           "support": {
-            "issues": "https://github.com/egulias/EmailValidator/issues",
-            "source": "https://github.com/egulias/EmailValidator/tree/4.0.2"
+            "issues": "https://github.com/EasyCorp/EasyAdminBundle/issues",
+            "source": "https://github.com/EasyCorp/EasyAdminBundle/tree/v4.8.3"
           },
           "funding": [
             {
-              "url": "https://github.com/egulias",
+              "url": "https://github.com/javiereguiluz",
               "type": "github"
             }
           ],
-          "time": "2023-10-06T06:47:41+00:00"
+          "time": "2023-10-29T19:21:38+00:00"
+        },
+      {
+        "name": "egulias/email-validator",
+        "version": "4.0.2",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/egulias/EmailValidator.git",
+          "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/ebaaf5be6c0286928352e054f2d5125608e5405e",
+          "reference": "ebaaf5be6c0286928352e054f2d5125608e5405e",
+          "shasum": ""
+        },
+        "require": {
+          "doctrine/lexer": "^2.0 || ^3.0",
+          "php": ">=8.1",
+          "symfony/polyfill-intl-idn": "^1.26"
+        },
+        "require-dev": {
+          "phpunit/phpunit": "^10.2",
+          "vimeo/psalm": "^5.12"
+        },
+        "suggest": {
+          "ext-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-master": "4.0.x-dev"
+          }
+        },
+        "autoload": {
+          "psr-4": {
+            "Egulias\\EmailValidator\\": "src"
+          }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Eduardo Gulias Davis"
+          }
+        ],
+        "description": "A library for validating emails against several RFCs",
+        "homepage": "https://github.com/egulias/EmailValidator",
+        "keywords": [
+          "email",
+          "emailvalidation",
+          "emailvalidator",
+          "validation",
+          "validator"
+        ],
+        "support": {
+          "issues": "https://github.com/egulias/EmailValidator/issues",
+          "source": "https://github.com/egulias/EmailValidator/tree/4.0.2"
+        },
+        "funding": [
+          {
+            "url": "https://github.com/egulias",
+            "type": "github"
+          }
+        ],
+        "time": "2023-10-06T06:47:41+00:00"
         },
       {
         "name": "friendsofphp/proxy-manager-lts",
@@ -4606,8 +4700,88 @@
           "time": "2023-02-01T08:22:55+00:00"
         },
         {
-          "name": "symfony/mailer",
+          "name": "symfony/intl",
           "version": "v6.0.19",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/intl.git",
+            "reference": "a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/intl/zipball/a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c",
+            "reference": "a2e1ce9048ea549ee1e8d9ce521cbe9a9ec7d92c",
+            "shasum": ""
+          },
+          "require": {
+            "php": ">=8.0.2"
+          },
+          "require-dev": {
+            "symfony/filesystem": "^5.4|^6.0"
+          },
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "Symfony\\Component\\Intl\\": ""
+            },
+            "exclude-from-classmap": [
+              "/Tests/"
+            ]
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Bernhard Schussek",
+              "email": "bschussek@gmail.com"
+            },
+            {
+              "name": "Eriksen Costa",
+              "email": "eriksen.costa@infranology.com.br"
+            },
+            {
+              "name": "Igor Wiedler",
+              "email": "igor@wiedler.ch"
+            },
+            {
+              "name": "Symfony Community",
+              "homepage": "https://symfony.com/contributors"
+            }
+          ],
+          "description": "Provides a PHP replacement layer for the C intl extension that includes additional data from the ICU library",
+          "homepage": "https://symfony.com",
+          "keywords": [
+            "i18n",
+            "icu",
+            "internationalization",
+            "intl",
+            "l10n",
+            "localization"
+          ],
+          "support": {
+            "source": "https://github.com/symfony/intl/tree/v6.0.19"
+          },
+          "funding": [
+            {
+              "url": "https://symfony.com/sponsor",
+              "type": "custom"
+            },
+            {
+              "url": "https://github.com/fabpot",
+              "type": "github"
+            },
+            {
+              "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+              "type": "tidelift"
+            }
+          ],
+          "time": "2023-01-01T08:36:10+00:00"
+        },
+      {
+        "name": "symfony/mailer",
+        "version": "v6.0.19",
             "source": {
                 "type": "git",
               "url": "https://github.com/symfony/mailer.git",
@@ -4628,56 +4802,56 @@
               "symfony/mime": "^5.4|^6.0",
               "symfony/service-contracts": "^1.1|^2|^3"
             },
-          "conflict": {
-            "symfony/http-kernel": "<5.4"
+        "conflict": {
+          "symfony/http-kernel": "<5.4"
+        },
+        "require-dev": {
+          "symfony/http-client-contracts": "^1.1|^2|^3",
+          "symfony/messenger": "^5.4|^6.0"
+        },
+        "type": "library",
+        "autoload": {
+          "psr-4": {
+            "Symfony\\Component\\Mailer\\": ""
           },
-          "require-dev": {
-            "symfony/http-client-contracts": "^1.1|^2|^3",
-            "symfony/messenger": "^5.4|^6.0"
+          "exclude-from-classmap": [
+            "/Tests/"
+          ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Fabien Potencier",
+            "email": "fabien@symfony.com"
           },
-          "type": "library",
-          "autoload": {
-            "psr-4": {
-              "Symfony\\Component\\Mailer\\": ""
-            },
-            "exclude-from-classmap": [
-              "/Tests/"
-            ]
+          {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+          }
+        ],
+        "description": "Helps sending emails",
+        "homepage": "https://symfony.com",
+        "support": {
+          "source": "https://github.com/symfony/mailer/tree/v6.0.19"
+        },
+        "funding": [
+          {
+            "url": "https://symfony.com/sponsor",
+            "type": "custom"
           },
-          "notification-url": "https://packagist.org/downloads/",
-          "license": [
-            "MIT"
-          ],
-          "authors": [
-            {
-              "name": "Fabien Potencier",
-              "email": "fabien@symfony.com"
-            },
-            {
-              "name": "Symfony Community",
-              "homepage": "https://symfony.com/contributors"
-            }
-          ],
-          "description": "Helps sending emails",
-          "homepage": "https://symfony.com",
-          "support": {
-            "source": "https://github.com/symfony/mailer/tree/v6.0.19"
+          {
+            "url": "https://github.com/fabpot",
+            "type": "github"
           },
-          "funding": [
-            {
-              "url": "https://symfony.com/sponsor",
-              "type": "custom"
-            },
-            {
-              "url": "https://github.com/fabpot",
-              "type": "github"
-            },
-            {
-              "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-              "type": "tidelift"
-            }
-          ],
-          "time": "2023-01-11T11:50:03+00:00"
+          {
+            "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+            "type": "tidelift"
+          }
+        ],
+        "time": "2023-01-11T11:50:03+00:00"
         },
       {
         "name": "symfony/mime",
@@ -5632,6 +5806,88 @@
             "support": {
               "source": "https://github.com/symfony/polyfill-php81/tree/v1.28.0"
             },
+          "funding": [
+            {
+              "url": "https://symfony.com/sponsor",
+              "type": "custom"
+            },
+            {
+              "url": "https://github.com/fabpot",
+              "type": "github"
+            },
+            {
+              "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+              "type": "tidelift"
+            }
+          ],
+          "time": "2023-01-26T09:26:14+00:00"
+        },
+      {
+        "name": "symfony/polyfill-uuid",
+        "version": "v1.28.0",
+        "source": {
+          "type": "git",
+          "url": "https://github.com/symfony/polyfill-uuid.git",
+          "reference": "9c44518a5aff8da565c8a55dbe85d2769e6f630e"
+        },
+        "dist": {
+          "type": "zip",
+          "url": "https://api.github.com/repos/symfony/polyfill-uuid/zipball/9c44518a5aff8da565c8a55dbe85d2769e6f630e",
+          "reference": "9c44518a5aff8da565c8a55dbe85d2769e6f630e",
+          "shasum": ""
+        },
+        "require": {
+          "php": ">=7.1"
+        },
+        "provide": {
+          "ext-uuid": "*"
+        },
+        "suggest": {
+          "ext-uuid": "For best performance"
+        },
+        "type": "library",
+        "extra": {
+          "branch-alias": {
+            "dev-main": "1.28-dev"
+          },
+          "thanks": {
+            "name": "symfony/polyfill",
+            "url": "https://github.com/symfony/polyfill"
+          }
+        },
+        "autoload": {
+          "files": [
+            "bootstrap.php"
+          ],
+          "psr-4": {
+            "Symfony\\Polyfill\\Uuid\\": ""
+          }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+          "MIT"
+        ],
+        "authors": [
+          {
+            "name": "Grégoire Pineau",
+            "email": "lyrixx@lyrixx.info"
+          },
+          {
+            "name": "Symfony Community",
+            "homepage": "https://symfony.com/contributors"
+          }
+        ],
+        "description": "Symfony polyfill for uuid functions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+          "compatibility",
+          "polyfill",
+          "portable",
+          "uuid"
+        ],
+        "support": {
+          "source": "https://github.com/symfony/polyfill-uuid/tree/v1.28.0"
+        },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -5646,7 +5902,7 @@
                     "type": "tidelift"
                 }
             ],
-          "time": "2023-01-26T09:26:14+00:00"
+        "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/property-access",
@@ -7238,8 +7494,82 @@
           "time": "2023-01-01T08:36:10+00:00"
         },
         {
+          "name": "symfony/uid",
+          "version": "v6.0.19",
+          "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/uid.git",
+            "reference": "6499e28b0ac9f2aa3151e11845bdb5cd21e6bb9d"
+          },
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/uid/zipball/6499e28b0ac9f2aa3151e11845bdb5cd21e6bb9d",
+            "reference": "6499e28b0ac9f2aa3151e11845bdb5cd21e6bb9d",
+            "shasum": ""
+          },
+          "require": {
+            "php": ">=8.0.2",
+            "symfony/polyfill-uuid": "^1.15"
+          },
+          "require-dev": {
+            "symfony/console": "^5.4|^6.0"
+          },
+          "type": "library",
+          "autoload": {
+            "psr-4": {
+              "Symfony\\Component\\Uid\\": ""
+            },
+            "exclude-from-classmap": [
+              "/Tests/"
+            ]
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Grégoire Pineau",
+              "email": "lyrixx@lyrixx.info"
+            },
+            {
+              "name": "Nicolas Grekas",
+              "email": "p@tchwork.com"
+            },
+            {
+              "name": "Symfony Community",
+              "homepage": "https://symfony.com/contributors"
+            }
+          ],
+          "description": "Provides an object-oriented API to generate and represent UIDs",
+          "homepage": "https://symfony.com",
+          "keywords": [
+            "UID",
+            "ulid",
+            "uuid"
+          ],
+          "support": {
+            "source": "https://github.com/symfony/uid/tree/v6.0.19"
+          },
+          "funding": [
+            {
+              "url": "https://symfony.com/sponsor",
+              "type": "custom"
+            },
+            {
+              "url": "https://github.com/fabpot",
+              "type": "github"
+            },
+            {
+              "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+              "type": "tidelift"
+            }
+          ],
+          "time": "2023-01-01T08:36:10+00:00"
+        },
+      {
             "name": "symfony/ux-chartjs",
-          "version": "v2.12.0",
+        "version": "v2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-chartjs.git",
@@ -10541,5 +10871,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-  "plugin-api-version": "2.6.0"
+  "plugin-api-version": "2.3.0"
 }

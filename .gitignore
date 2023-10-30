@@ -219,3 +219,7 @@ yarn-error.log
 /phpunit.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
+/public/bundles
+/.env.test
+phpunit.xml.dist
+
