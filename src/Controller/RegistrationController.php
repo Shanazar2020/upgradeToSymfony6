@@ -46,7 +46,7 @@ class RegistrationController extends AbstractController
             );
 
             $signedUrl = $signatureComponents->getSignedUrl();
-            $this->sendVerificationEmail($mailer, $user, $signedUrl);
+//            $this->sendVerificationEmail($mailer, $user, $signedUrl);
             $this->addFlash('success', sprintf(
                 'Confirm your email - the verify link as sent to %s',
                 $user->getEmail()

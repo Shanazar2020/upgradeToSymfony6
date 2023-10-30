@@ -52,6 +52,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     #[ORM\Column(name: 'totpSecrect', nullable: true)]
     private ?string $totpSecret = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avatar = null;
+
+    #[ORM\Column]
+    private ?bool $enabled = true;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -243,6 +249,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
     public function setTotpSecret(?string $totpSecret): self
     {
         $this->totpSecret = $totpSecret;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->avatar;
+    }
+
+    public function getAvatarUrl(): ?string
+    {
+        if (!$this->avatar) {
+            return null;
+        }
+
+        if (strpos($this->avatar, '/') !== false) {
+            return $this->avatar;
+        }
+
+        return sprintf('/uploads/avatars/%s', $this->avatar);
+    }
+
+    public function setAvatar(?string $avatar): void
+    {
+        $this->avatar = $avatar;
+    }
+
+    public function isEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): static
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }
