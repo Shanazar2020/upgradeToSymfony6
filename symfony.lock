@@ -379,9 +379,6 @@
     "symfony/polyfill-php81": {
         "version": "v1.27.0"
     },
-    "symfony/polyfill-uuid": {
-        "version": "v1.15.0"
-    },
     "symfony/property-access": {
         "version": "v5.1.2"
     },
@@ -508,7 +505,7 @@
         ]
     },
     "symfony/webpack-encore-bundle": {
-        "version": "1.17",
+        "version": "1.14",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",

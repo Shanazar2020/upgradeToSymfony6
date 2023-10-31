@@ -203,14 +203,6 @@ fabric.properties
 !./docker/mysql/mysql/
 !./docker/root/
 !./docker/sys/
-
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-#/public/build/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
-
 .var/
 .vendor/
 /tools/php-cs-fixer/vendor
@@ -222,4 +214,12 @@ yarn-error.log
 /public/bundles
 /.env.test
 phpunit.xml.dist
+/var
 
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
