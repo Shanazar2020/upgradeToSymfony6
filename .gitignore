@@ -222,4 +222,5 @@ yarn-error.log
 /public/bundles
 /.env.test
 phpunit.xml.dist
+/var
 
