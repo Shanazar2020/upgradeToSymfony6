@@ -505,7 +505,7 @@
         ]
     },
     "symfony/webpack-encore-bundle": {
-        "version": "1.17",
+        "version": "1.14",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
