@@ -96,15 +96,6 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
-    "easycorp/easyadmin-bundle": {
-        "version": "4.8",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "3.0",
-            "ref": "b131e6cbfe1b898a508987851963fff485986285"
-        }
-    },
     "fakerphp/faker": {
         "version": "v1.13.0"
     },
@@ -378,9 +369,6 @@
     },
     "symfony/polyfill-php81": {
         "version": "v1.27.0"
-    },
-    "symfony/polyfill-uuid": {
-        "version": "v1.15.0"
     },
     "symfony/property-access": {
         "version": "v5.1.2"
