@@ -41,6 +41,7 @@
     "symfony/twig-bundle": "6.0.*",
     "symfony/ux-chartjs": "^2.0",
     "symfony/validator": "6.0.*",
+    "symfony/webpack-encore-bundle": "1.14.0",
     "symfony/yaml": "6.0.*",
     "symfonycasts/verify-email-bundle": "^1.7",
     "twig/extra-bundle": "^2.12|^3.0",
@@ -106,7 +107,8 @@
   "extra": {
     "symfony": {
       "allow-contrib": false,
-      "require": "6.0.*"
+      "require": "6.0.*",
+      "docker": false
     }
   }
 }
