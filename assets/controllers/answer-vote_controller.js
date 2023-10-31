@@ -11,7 +11,7 @@ export default class extends Controller {
         event.preventDefault();
         const button = event.currentTarget;
 
-        axios.post(this.urlValue, JSON.stringify({
+        axios.post(this.values.url, JSON.stringify({
             direction: button.value
         }))
             .then((response) => {
