@@ -23,15 +23,15 @@ class AppFixtures extends Fixture
         UserFactory::createOne([
             'email' => 'abraca_user@example.com',
         ]);
-        UserFactory::createMany(10);
+        UserFactory::createMany(5);
 
-        TagFactory::createMany(100);
+        TagFactory::createMany(8);
 
-        $questions = QuestionFactory::new()->createMany(20, fn() => [
+        $questions = QuestionFactory::new()->createMany(9, fn() => [
             'owner' => UserFactory::random(),
         ]);
 
-        QuestionTagFactory::new()->createMany(100, fn() => [
+        QuestionTagFactory::new()->createMany(10, fn() => [
             'question' => QuestionFactory::random(),
             'tag' => TagFactory::random(),
         ]);
@@ -39,11 +39,11 @@ class AppFixtures extends Fixture
         QuestionFactory::new()->unpublished()->createMany(5);
 
         AnswerFactory::new()
-            ->createMany(100, fn() => [
+            ->createMany(10, fn() => [
                 'question' => $questions[array_rand($questions)],
             ]);
 
-        AnswerFactory::new()->needsApproval()->many(20)->create();
+        AnswerFactory::new()->needsApproval()->many(5)->create();
 
         $manager->flush();
     }
