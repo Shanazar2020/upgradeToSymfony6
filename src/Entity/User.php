@@ -197,6 +197,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
         return $this->getFirstName() ?: $this->getEmail();
     }
 
+    #[Groups('user:read')]
+    public function getFullName(): string
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     /**
      * @return Collection|Question[]
      */
