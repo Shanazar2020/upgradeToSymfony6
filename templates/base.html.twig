@@ -39,7 +39,9 @@
                     <a class="nav-link" href="{{ path('app_popular_answers') }}">Answers</a>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="nav-link text-black-50" href="{{ path('admin_dashboard') }}">Admin</a>
+                    <li class="nav-item">
+                       <a class="nav-link text-black-80" href="{{ path('admin_dashboard') }}">Admin</a>
+                    </li>
                 {% endif %}
             </ul>
 

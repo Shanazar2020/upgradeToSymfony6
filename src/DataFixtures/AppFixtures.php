@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
         UserFactory::createOne([
             'email' => 'abraca_user@example.com',
         ]);
-        UserFactory::createMany(5);
+//        UserFactory::createMany(5);
 
         TagFactory::createMany(8);
 
