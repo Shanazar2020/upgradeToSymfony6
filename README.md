@@ -8,10 +8,14 @@ repository: [Cauldron Overflow](https://github.com/Shanazar2020/cauldron_overflo
 ## What's new
 
 The project is updated to use PHP 8.0, Symfony 6 and Email Verification service is added while registration.
+Additionally, fully functional Admin pages are added to the project.
+
 To update syntax these PHP Tools are used:
 
 - [Rector - Instant Upgrades and Automated Refactoring](https://github.com/rectorphp/rector#rector---instant-upgrades-and-automated-refactoring)
 - [PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
+
+For Admin pages [EasyAdminBundle](https://symfony.com/bundles/EasyAdminBundle/current/index.html) is used.
 
 ## Getting Started
 
@@ -73,6 +77,26 @@ Verification Email in Mailer Service
 
 ![Email Verified](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/e0735e62-f30a-464d-b5f9-962e09fb4b40)
 Email Verified
+
+Admin Pages
+------------------
+1. Admin Dashboard and Menu: You can access the admin dashboard and menu, modify what you see on there.
+2. Admin CRUD: You can access the admin CRUD pages and modify the data in the database, including uploading images.
+3. Different fields for different pages: viewing, editing, and creating pages have different fields.
+
+Screenshots
+-----------
+![Dashboard](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/c28e39cb-fbf7-4d81-8a73-54e3f19b47de)
+Dashboard
+
+![User CRUD Page](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/1efa3449-6b61-43b0-add8-0187ad676473)
+User CRUD Page
+
+![View Page](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/50515f0d-850d-4a61-bbd2-4c26175c0e06)
+View Page
+
+![Editing Page](https://github.com/Shanazar2020/upgradeToSymfony6/assets/69158788/7b33a667-04d2-4ee6-9851-62ae66e69cee)
+Editing Page
 
 
 General Functionality

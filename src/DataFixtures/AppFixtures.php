@@ -17,11 +17,13 @@ class AppFixtures extends Fixture
         UserFactory::createOne([
             'email' => 'abraca_admin@example.com',
             'roles' => ['ROLE_ADMIN'],
-            'avatar' => 'default.png'
+            'avatar' => 'default.png',
+            'isVerified' => true,
         ]);
 
         UserFactory::createOne([
             'email' => 'abraca_user@example.com',
+            'isVerified' => true,
         ]);
 //        UserFactory::createMany(5);
 
