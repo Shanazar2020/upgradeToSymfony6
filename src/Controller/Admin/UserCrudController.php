@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Faker\Provider\Text;
@@ -27,6 +28,11 @@ class UserCrudController extends AbstractCrudController
     {
         yield IdField   ::new('id')
             ->onlyOnIndex();
+
+        yield ImageField::new('avatar')
+            ->setBasePath('/uploads/avatars')
+            ->setUploadDir('public/uploads/avatars')
+            ->setUploadedFileNamePattern('[slug]-[timestamp].[extension]');
 
         yield EmailField::new("email");
 
