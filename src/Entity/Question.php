@@ -36,7 +36,7 @@ class Question
     #[ORM\Column()]
     private int $votes = 0;
 
-    #[ORM\OneToMany(targetEntity: Answer::class, mappedBy: 'question', fetch: 'EXTRA_LAZY')]
+    #[ORM\OneToMany(mappedBy: 'question', targetEntity: Answer::class, fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $answers;
 
@@ -47,7 +47,7 @@ class Question
     #[ORM\Column]
     private ?bool $isApproved = null;
 
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'questions', fetch: 'EXTRA_LAZY')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'questions', fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     private Collection $tags;
 
     public function __construct()
@@ -209,8 +209,17 @@ class Question
         return $this->tags;
     }
 
-    public function addTag(Tag $tag): static
+    public function addTag(Tag|string $tag): static
     {
+        if (!$tag instanceof Tag){
+            $tag = $this->tags->findFirst( function($key, $element) use ($tag){
+
+                dump($element, $tag);
+                return $element?->getName() == $tag;
+            });
+
+        }
+
         if (!$this->tags->contains($tag)) {
             $this->tags->add($tag);
         }
