@@ -40,9 +40,6 @@ class Question
     #[ORM\OrderBy(['createdAt' => 'DESC'])]
     private Collection $answers;
 
-    #[ORM\OneToMany(targetEntity: QuestionTag::class, mappedBy: 'question')]
-    private Collection $questionTags;
-
     #[ORM\ManyToOne(inversedBy: 'questions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $owner = null;
@@ -50,11 +47,13 @@ class Question
     #[ORM\Column]
     private ?bool $isApproved = null;
 
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'questions')]
+    private Collection $tags;
+
     public function __construct()
     {
         $this->answers = new ArrayCollection();
-        //        $this->tags = new ArrayCollection();
-        $this->questionTags = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,60 +176,6 @@ class Question
 
         return $this;
     }
-    //
-    //    /**
-    //     * @return Collection|Tag[]
-    //     */
-    //    public function getTags(): Collection
-    //    {
-    //        return $this->tags;
-    //    }
-    //
-    //    public function addTag(Tag $tag): self
-    //    {
-    //        if (!$this->tags->contains($tag)) {
-    //            $this->tags[] = $tag;
-    //        }
-    //
-    //        return $this;
-    //    }
-    //
-    //    public function removeTag(Tag $tag): self
-    //    {
-    //        $this->tags->removeElement($tag);
-    //
-    //        return $this;
-    //    }
-
-    /**
-     * @return Collection|QuestionTag[]
-     */
-    public function getQuestionTags(): Collection
-    {
-        return $this->questionTags;
-    }
-
-    public function addQuestionTag(QuestionTag $questionTag): self
-    {
-        if (!$this->questionTags->contains($questionTag)) {
-            $this->questionTags[] = $questionTag;
-            $questionTag->setQuestion($this);
-        }
-
-        return $this;
-    }
-
-    public function removeQuestionTag(QuestionTag $questionTag): self
-    {
-        if ($this->questionTags->removeElement($questionTag)) {
-            // set the owning side to null (unless already changed)
-            if ($questionTag->getQuestion() === $this) {
-                $questionTag->setQuestion(null);
-            }
-        }
-
-        return $this;
-    }
 
     public function getOwner(): ?User
     {
@@ -252,6 +197,30 @@ class Question
     public function setIsApproved(bool $isApproved): static
     {
         $this->isApproved = $isApproved;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tag>
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): static
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags->add($tag);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): static
+    {
+        $this->tags->removeElement($tag);
 
         return $this;
     }

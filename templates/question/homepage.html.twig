@@ -26,8 +26,8 @@
                                 <span>{{ question.votesString}} votes</span>
                             </div>
                             <div>
-                                {% for questionTag in question.questionTags %}
-                                    <span class="badge badge-pill badge-primary">{{ questionTag.tag.name }}</span>
+                                {% for tag in question.tags %}
+                                    <span class="badge badge-pill badge-primary">{{ tag.name }}</span>
                                 {% endfor %}
                             </div>
                         </div>
