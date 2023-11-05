@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Factory\AnswerFactory;
 use App\Factory\QuestionFactory;
-use App\Factory\QuestionTagFactory;
+//use App\Factory\QuestionTagFactory;
 use App\Factory\TagFactory;
 use App\Factory\UserFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -25,17 +25,12 @@ class AppFixtures extends Fixture
             'email' => 'abraca_user@example.com',
             'isVerified' => true,
         ]);
-//        UserFactory::createMany(5);
 
         TagFactory::createMany(8);
 
         $questions = QuestionFactory::new()->createMany(9, fn() => [
             'owner' => UserFactory::random(),
-        ]);
-
-        QuestionTagFactory::new()->createMany(10, fn() => [
-            'question' => QuestionFactory::random(),
-            'tag' => TagFactory::random(),
+            'tags' => TagFactory::randomRange(1, 5)
         ]);
 
         QuestionFactory::new()->unpublished()->createMany(5);
