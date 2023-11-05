@@ -3,16 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Question;
-use App\Entity\QuestionTag;
-use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class QuestionCrudController extends AbstractCrudController
 {
@@ -27,13 +24,29 @@ class QuestionCrudController extends AbstractCrudController
             ->onlyOnIndex();
 
         yield Field::new("name");
-        yield AssociationField::new('tags');
+        yield CollectionField::new('tags')
+            ->hideOnForm();
 
         yield TextareaField::new('question')
             ->hideOnIndex();
 
         yield Field::new("votes", 'Total Votes')
             ->setTextAlign('center');
+
+        yield AssociationField::new('owner')
+            ->autocomplete()
+            ->formatValue(static function($value, Question $question) {
+                if (!$user = $question->getOwner()){
+                    return null;
+                }
+
+                return sprintf('%s&nbsp;(%s)', $user->getEmail(), $user->getQuestions()->count());
+            })
+            ->setQueryBuilder(function(QueryBuilder $queryBuilder) {
+                $queryBuilder->andWhere('entity.enabled = :enabled')
+                    ->setParameter('enabled', true);
+            });
+
         yield Field::new("createdAt")
         ->hideOnForm();
     }

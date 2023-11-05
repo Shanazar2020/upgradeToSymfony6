@@ -47,7 +47,7 @@ class Question
     #[ORM\Column]
     private ?bool $isApproved = null;
 
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'questions')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'questions', fetch: 'EXTRA_LAZY')]
     private Collection $tags;
 
     public function __construct()
