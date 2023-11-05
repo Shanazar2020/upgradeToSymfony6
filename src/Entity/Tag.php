@@ -21,7 +21,7 @@ class Tag
     #[ORM\Column()]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'tags')]
+    #[ORM\ManyToMany(targetEntity: Question::class, mappedBy: 'tags', orphanRemoval: true)]
     private Collection $questions;
 
     public function __construct()

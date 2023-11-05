@@ -35,6 +35,11 @@ class Answer
     #[ORM\Column(length: 15, nullable: true)]
     private ?string $status = self::STATUS_NEEDS_APPROVAL;
 
+    public function __toString(): string
+    {
+        return $this->getUsername();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
